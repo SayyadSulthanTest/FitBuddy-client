@@ -1,0 +1,9 @@
+.register-container {
+  width: 100%;
+}
+
+.register-form {
+  width: auto;
+  max-width: 500px;
+  margin: auto;
+}

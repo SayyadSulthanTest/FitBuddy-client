@@ -1,0 +1,96 @@
+/* body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #fff;
+} */
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+/* 
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+} */
+
+.logo img {
+  max-width: 100px;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 20px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.user-profile {
+  margin-left: auto;
+}
+
+.user-profile span {
+  margin-right: 10px;
+}
+
+.user-profile button {
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.user-profile button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+main {
+  padding: 20px 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.left-side,
+.right-side {
+  flex: 1;
+}
+
+.box {
+  margin: 0 10px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #f0f0f0;
+}
+
+.box h2 {
+  margin-top: 0;
+}
+
+.challenges .add-challenge-btn {
+  margin-bottom: 10px;
+}
+
+.exercise-details img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}

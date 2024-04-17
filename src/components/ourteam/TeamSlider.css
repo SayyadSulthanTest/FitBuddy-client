@@ -1,0 +1,35 @@
+.team-heading {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+.member-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  margin: 10px;
+  text-align: center;
+  width: 220px;
+  height: 320px;
+}
+
+.member-box img {
+  border-radius: 50%;
+}
+
+.member-box .content {
+  margin-top: auto;
+}
+
+.member-box h3 {
+  margin-bottom: 5px;
+}
+
+.member-box p {
+  margin: 0;
+}

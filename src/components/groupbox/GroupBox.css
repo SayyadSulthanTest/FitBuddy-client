@@ -1,0 +1,44 @@
+.groupbox-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-start;
+  height: 62vh;
+  /* border: 2px solid yellow; */
+}
+
+.groupbox {
+  width: 42%;
+  height: 90%;
+  background-color: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  display: flex;
+  gap: 6vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.groupbox h2 {
+  font-size: 20px;
+}
+
+.groupbox p {
+  font-size: 16px;
+}
+
+.arrow-link {
+  position: relative;
+  width: 12vh;
+  height: 12vh;
+  cursor: pointer;
+}
+
+.arrow-link svg {
+  color: white;
+  width: 100%;
+  height: 100%;
+}
