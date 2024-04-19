@@ -241,7 +241,6 @@ const Profile = () => {
                     minWidth: "30%",
                     display: "flex",
                     flexDirection: "column",
-                    gap: "30px",
                   }}
                   onClick={() => handleNavigatePrivateGroup(group._id)}
                 >
@@ -249,6 +248,7 @@ const Profile = () => {
                     style={{
                       display: "flex",
                       justifyContent: "center",
+                      gap: "50px",
                       alignItems: "center",
                     }}
                   >
@@ -259,7 +259,13 @@ const Profile = () => {
                       width="100px"
                       style={{ borderRadius: "6px", border: "solid 1px gold" }}
                     />
-                    <div>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "space-between",
+                      }}
+                    >
                       <h4>{group.name}</h4>
                       <p>{group.description}</p>
 
