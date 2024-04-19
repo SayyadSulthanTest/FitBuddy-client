@@ -1,19 +1,37 @@
 import React, { useState } from "react";
 import TeamSlider from "../ourteam/TeamSlider";
-
+import axios from "axios";
+import { toast } from "react-toastify";
 const Footer = () => {
   const [contactName, setContactName] = useState("");
   const [contactEmail, setContactEmail] = useState("");
-  const [contactSubject, setContactSubject] = useState("");
   const [contactMessage, setContactMessage] = useState("");
-  const contactSubmitHandler = () => {};
+  const contactSubmitHandler = () => {
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };
+
+    try {
+      const body = {
+        name: contactName,
+        email: contactEmail,
+        message: contactMessage,
+      };
+
+      axios.post(`${API_URL}/query`, body, config).then(({ data }) => {
+        console.log(data.data);
+        toast.success("Recorded your response!");
+      });
+    } catch (err) {
+      console.log("Error in sending Query", err);
+      toast.error("Failed to submit query...");
+    }
+  };
+
   return (
     <footer style={{ backgroundColor: "inherit" }}>
-      {/* <TeamSlider /> */}
-
-      {/* <section id="ourteam-container" style={{ padding: '50px' }}>
-                <TeamSlider />
-            </section> */}
       <section
         id="contactus-container"
         style={{
@@ -48,9 +66,6 @@ const Footer = () => {
                 fontSize: "34px",
                 // backgroundClip: "text",
                 color: "pink",
-                // WebkitBackgroundClip: "text",
-                // backgroundImage:
-                //   "linear-gradient(to bottom, #927E13,#70E916,#FFDB17)",
               }}
             >
               Contact Us
@@ -95,26 +110,7 @@ const Footer = () => {
               }}
               onChange={(e) => setContactEmail(e.target.value)}
             />
-            <input
-              type="text"
-              placeholder="Subject"
-              name="contactSubject"
-              id="contactSubject"
-              value={contactSubject}
-              required
-              style={{
-                padding: "4px 10px",
-                backgroundColor: "black",
-                color: "pink",
-                fontSize: "20px",
-                borderTop: "none",
-                borderLeft: "none",
-                borderRight: "none",
-                borderBottom: "3px solid pink",
-                outline: "none",
-              }}
-              onChange={(e) => setContactSubject(e.target.value)}
-            />
+
             <textarea
               name="contactMessage"
               id="contactMessage"

@@ -12,9 +12,9 @@ import GroupBox from "../../components/groupbox/GroupBox.jsx";
 import axios from "axios";
 import TeamSlider from "../../components/ourteam/TeamSlider.jsx";
 import { useNavigate } from "react-router-dom";
-import { addPrivateGroup } from "../../slices/groupsSlice";
 import { useDispatch } from "react-redux";
 import { IconButton } from "@mui/material";
+import Loading from "../../components/loading/Loading.jsx";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import UploadImage from "../../components/UploadImage.jsx";
 const API_URL = import.meta.env.VITE_API_URL;
@@ -85,7 +85,6 @@ const Home = () => {
       const { data } = await axios.get(`${API_URL}/groups/private`, config);
       console.log("data: ", data);
       setPrivateGroups(data.data);
-      dispatch(addPrivateGroup(data.data));
       setLoadingGroup(false);
     } catch (err) {
       console.log("error: ", err);
@@ -101,7 +100,7 @@ const Home = () => {
       return;
     }
 
-    history(`/joinprivategroup/${id}`);
+    history(`/privategroup/${id}`);
   };
 
   return (
@@ -242,7 +241,7 @@ const Home = () => {
             p={2}
             sx={{ flexWrap: "wrap" }}
           >
-            {loadingGroup && <p>Loading... Group Data...</p>}
+            {loadingGroup && <Loading />}
             {privateGroups.map((group, index) => (
               <Box
                 key={index}
@@ -373,31 +372,31 @@ const Home = () => {
         </header>
         <GroupBox />
       </section>
-      {!user.isLoggedIn && (
-        <section
-          id="groups-container"
-          style={{ minHeight: "100vh", paddingTop: "100px" }}
+      {/* {!user.isLoggedIn && ( */}
+      <section
+        id="groups-container"
+        style={{ minHeight: "100vh", paddingTop: "100px" }}
+      >
+        <h2 style={{ textAlign: "center", fontSize: "30px" }}>
+          Join our active community of fitness enthusiasts and explore public
+          groups!
+        </h2>
+        <Box
+          width="100vw"
+          my={2}
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          gap={4}
+          p={2}
+          sx={{ flexWrap: "wrap" }}
         >
-          <h2 style={{ textAlign: "center", fontSize: "30px" }}>
-            Join our active community of fitness enthusiasts and explore public
-            groups!
-          </h2>
-          <Box
-            width="100vw"
-            my={2}
-            display="flex"
-            alignItems="center"
-            justifyContent="center"
-            gap={4}
-            p={2}
-            sx={{ flexWrap: "wrap" }}
-          >
-            {groupsList.map((group, index) => (
-              <GroupItem key={index} group={group} id={index} />
-            ))}
-          </Box>
-        </section>
-      )}
+          {groupsList.map((group, index) => (
+            <GroupItem key={index} group={group} id={index} />
+          ))}
+        </Box>
+      </section>
+      {/* )} */}
       <Footer />
     </div>
   );

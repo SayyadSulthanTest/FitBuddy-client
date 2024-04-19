@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 const API_URL = import.meta.env.VITE_API_URL;
-
+import Loading from "../loading/Loading.jsx";
 const AddMember = ({ groupid }) => {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -26,7 +26,7 @@ const AddMember = ({ groupid }) => {
   }, [groupid]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   if (error) {

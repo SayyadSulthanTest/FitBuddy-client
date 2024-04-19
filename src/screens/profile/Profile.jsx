@@ -13,8 +13,6 @@ const Profile = () => {
   const dispatch = useDispatch();
   const groupsList = useSelector(groups);
   const userData = useSelector((state) => state.auth);
-  //   console.log("Profile component", userData);
-  // const [data, setData] = useState([]);
   const [privateGroups, setPrivateGroups] = useState([]);
   const [loadingGroup, setLoadingGroup] = useState(false);
 
@@ -35,7 +33,6 @@ const Profile = () => {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
-        // 'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE,PATCH,OPTIONS',
       },
     };
     try {
@@ -71,10 +68,8 @@ const Profile = () => {
               fitnessGoals: response.data.data.bio,
             })
           );
-          // Store user data in local storage
           localStorage.setItem("userData", JSON.stringify(response.data.data));
         } else {
-          // Redirect the user to the login page if token is not found
           history.push("/");
         }
       } catch (error) {
@@ -82,7 +77,6 @@ const Profile = () => {
       }
     };
 
-    // Retrieve user data from local storage if available
     const storedUserData = localStorage.getItem("userData");
     if (storedUserData) {
       dispatch(updateUser(JSON.parse(storedUserData)));
@@ -141,7 +135,6 @@ const Profile = () => {
             toast.success("Left the group successfully!");
           }
         } else {
-          // Redirect the user to the login page if token is not found
           history.push("/");
         }
       } catch (error) {
@@ -149,10 +142,7 @@ const Profile = () => {
       }
     }
   };
-  // setData(data.filter((item, index) => index !== id));
-  // };
 
-  //   console.log(userData.fitnessGoals);
   const editProfileHandler = () => {
     history("/editprofile");
   };
@@ -218,6 +208,7 @@ const Profile = () => {
                     backgroundColor: "#FFD700",
                     alignSelf: "flex-start",
                     padding: "2px 25px",
+                    borderRadius: "8px",
                   }}
                 >
                   <strong>Edit</strong>
@@ -229,7 +220,7 @@ const Profile = () => {
 
         <Grid item xs={12}>
           <Paper
-            sx={{ padding: "10px", backgroundColor: "black", color: "#FFD700" }}
+            sx={{ padding: "10px", backgroundColor: "black", color: "white" }}
           >
             <h3 style={{ textAlign: "center" }}>Groups</h3>
 
@@ -250,6 +241,7 @@ const Profile = () => {
                     minWidth: "30%",
                     display: "flex",
                     flexDirection: "column",
+                    gap: "30px",
                   }}
                   onClick={() => handleNavigatePrivateGroup(group._id)}
                 >
@@ -265,6 +257,7 @@ const Profile = () => {
                       alt="groupIconPic"
                       height="100px"
                       width="100px"
+                      style={{ borderRadius: "6px", border: "solid 1px gold" }}
                     />
                     <div>
                       <h4>{group.name}</h4>
@@ -282,14 +275,14 @@ const Profile = () => {
                       backgroundColor: "red",
                       margin: "auto",
                       padding: "2px 14px",
-                      borderRadius: "10px",
+                      borderRadius: "6px",
                     }}
                   >
                     <strong>
                       {" "}
                       {group.admin === userData.id
                         ? "Delete Group"
-                        : "Leave Group"}{" "}
+                        : "Leave Group"}
                     </strong>
                   </button>
                 </div>

@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
-import "./privategropmember.css"; // Import your CSS file
+import "./privategropmember.css";
 
 import { useParams, useNavigate } from "react-router-dom";
 import axois from "axios";
-import { display, fontWeight } from "@mui/system";
-import { Bluetooth } from "@mui/icons-material";
-
+import Loading from "../../components/loading/Loading.jsx";
 const API_URL = import.meta.env.VITE_API_URL;
 const GroupPage = () => {
   const navigate = useNavigate();
@@ -19,20 +17,13 @@ const GroupPage = () => {
   useEffect(() => {
     setLoading(true);
     console.log("Inside usueEffect of Member List");
-    // alert(window.location.href);
     if (!id) {
       history("/");
       return;
     }
-    // console.log('history: ', myHistory);
-    // console.log(previousLocationPathname);
 
     const token = localStorage.getItem("token");
-    // const deceded = jwtDecode(token);
-    // dispatch(updateUser(deceded));
-    // dispatch(login());
-    // api request and then set the other values to initial values
-    // console.log(token);
+
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
@@ -57,7 +48,7 @@ const GroupPage = () => {
     return color;
   };
   if (loading) {
-    return <h1>Loading...</h1>;
+    return <Loading />;
   }
   return (
     <div
@@ -80,7 +71,6 @@ const GroupPage = () => {
         }}
       >
         {members.map((member, index) => (
-          // <div>
           <div
             className="member-profile"
             key={index}
@@ -90,7 +80,6 @@ const GroupPage = () => {
               width: "auto",
               minWidth: "27%",
               alignItems: "center",
-              // gap: "50px",
               padding: "6px 26px 6px 12px",
               marginTop: "2vh",
               backgroundColor: getRandomColor(),
@@ -112,31 +101,10 @@ const GroupPage = () => {
               <p>{member.name}</p>
               <p>{member.bio ? member.bio : " Foo"}</p>
             </div>
-            {/* <div
-                            className={`status-line ${
-                                member.status === 'Online' ? 'status-online' : 'status-offline'
-                            }`}
-                        >
-                            ${member.status}
-                        </div> */}
           </div>
-          // </div>
         ))}
       </div>
-      {/* Header */}
-      {/* <header>
-                <div className="profile-info">
-                    
-                    <span>User Name</span>
-                    
-                    <button>Logout</button>
-                </div>
-            </header> */}
 
-      {/* Member List */}
-      {/* <div className="member-list" id="memberList">
-                <h2>Private Member List</h2>
-            </div> */}
       <p style={{ textAlign: "center" }}>
         <button
           onClick={goBack}

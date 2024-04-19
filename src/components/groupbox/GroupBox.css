@@ -3,6 +3,7 @@
   justify-content: space-around;
   align-items: flex-start;
   height: 62vh;
+  color: black;
   /* border: 2px solid yellow; */
 }
 
@@ -38,7 +39,7 @@
 }
 
 .arrow-link svg {
-  color: white;
+  color: black;
   width: 100%;
   height: 100%;
 }

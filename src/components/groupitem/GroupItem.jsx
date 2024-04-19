@@ -183,7 +183,7 @@ const GroupItem = ({ group, id }) => {
   const navigate = useNavigate();
   const handleExploreGroup = (e) => {
     e.preventDefault();
-    navigate(`/joinpublicgroup/${id}`);
+    navigate(`/publicgroups`);
   };
 
   return (

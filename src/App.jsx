@@ -24,7 +24,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { login, logout, updateUser } from "./slices/authSlice.js";
 import PublicGroup from "./screens/publicgroups/PublicGroup.jsx";
 import PrivateGroup from "./screens/privategroups/PrivateGroup.jsx";
-
+import ComingSoon from "./components/comingsoon/ComingSoon.jsx";
+import Loading from "./components/loading/Loading.jsx";
 const ProtectedRoutes = ({ childrens, ...rest }) => {
   const auth = useSelector((state) => state.auth);
   // if the user authenticated go to that desired routes
@@ -69,7 +70,7 @@ const App = () => {
     dispatch(logout());
   };
   if (loading) {
-    return <p>Loading</p>;
+    return <Loading />;
   }
 
   return (
@@ -95,6 +96,7 @@ const App = () => {
                             <> */}
             {/* <Route path="/profile" element={<Profile />} /> */}
             <Route path="/editprofile" element={<EditProfile />} />
+            <Route path="/publicgroups" element={<ComingSoon />} />
             <Route path="/profile" element={<ProtectedRoutes />}>
               <Route path="/profile" Component={Profile} />
             </Route>
@@ -107,12 +109,9 @@ const App = () => {
               path="/groups/:id/createchallenge"
               element={<CreateChallenge />}
             />{" "}
-            <Route
-              path="/joinprivategroup/:id/showmembers"
-              element={<ShowMembers />}
-            />
-            <Route path="/joinpublicgroup/:id" element={<PublicGroup />} />
-            <Route path="/joinprivategroup/:id" element={<PrivateGroup />} />
+            <Route path="/privategroup/:id/members" element={<ShowMembers />} />
+            {/* <Route path="/joinpublicgroup/:id" element={<PublicGroup />} /> */}
+            <Route path="/privategroup/:id" element={<PrivateGroup />} />
             <Route path="/" element={<Home />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
