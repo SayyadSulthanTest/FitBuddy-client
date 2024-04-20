@@ -107,6 +107,7 @@ const App = () => {
             {/* <Route path="/joinpublicgroup/:id" element={<PublicGroup />} /> */}
             <Route path="/privategroup/:id" element={<PrivateGroup />} />
             <Route path="/" element={<Home />} />
+            <Route path="/resetpassword" element={<ResetPassword />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
         </div>

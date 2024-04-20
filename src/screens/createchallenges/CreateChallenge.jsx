@@ -199,7 +199,8 @@ const CreateChallenge = () => {
             display: "flex",
             flexDirection: "column",
             gap: "8px",
-            width: "45%",
+            width: "90vw",
+            justifyContent: "center",
           }}
         >
           <h2 style={{ alignSelf: "flex-start" }}>Create Challenge</h2>
@@ -208,7 +209,7 @@ const CreateChallenge = () => {
             type="text"
             value={challengeTitle}
             onChange={(e) => setChallengeTitle(e.target.value)}
-            placeholder="Challenge name here..."
+            placeholder="Challenge Name"
             required
             sx={{
               mb: 1,
@@ -247,6 +248,7 @@ const CreateChallenge = () => {
           </p>
           <div
             style={{
+              width: "100%",
               display: "flex",
               justifyContent: "center",
               flexWrap: "wrap",
@@ -254,7 +256,7 @@ const CreateChallenge = () => {
               padding: "10px 0",
             }}
           >
-            <div style={{ minWidth: "250px" }}>
+            <div style={{ minWidth: "250px", width: "90%" }}>
               <label htmlFor="startDate">Start Date: </label>
 
               <input
@@ -267,7 +269,7 @@ const CreateChallenge = () => {
                 min={new Date().toISOString().split("T")[0]} // Set min attribute to today's date
               />
             </div>
-            <div style={{ minWidth: "250px" }}>
+            <div style={{ minWidth: "250px", width: "90%" }}>
               <label htmlFor="endDate">End Date: </label>
               <input
                 label="End Date"

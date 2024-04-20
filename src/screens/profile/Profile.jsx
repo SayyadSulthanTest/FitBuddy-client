@@ -248,7 +248,6 @@ const Profile = () => {
                     display: "flex",
                     // flexDirection: "column",
                   }}
-                  onClick={() => handleNavigatePrivateGroup(group._id)}
                 >
                   <div
                     style={{
@@ -283,8 +282,16 @@ const Profile = () => {
                           padding: "0.3rem 0",
                         }}
                       >
-                        <h4>{group.name}</h4>
-                        <p>{group.description}</p>
+                        <h4
+                          onClick={() => handleNavigatePrivateGroup(group._id)}
+                        >
+                          {group.name}
+                        </h4>
+                        <p
+                          onClick={() => handleNavigatePrivateGroup(group._id)}
+                        >
+                          {group.description}
+                        </p>
 
                         <span>
                           Role:{" "}

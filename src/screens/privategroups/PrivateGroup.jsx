@@ -154,7 +154,6 @@ const PrivateGroup = () => {
     return (
       <div
         style={{
-          minHeight: "100vh",
           padding: "15vh",
           backgroundColor: "black",
           color: "white",
@@ -227,7 +226,7 @@ const PrivateGroup = () => {
                   display: "flex",
                   flexWrap: "wrap",
                   padding: "6px 30px",
-                  gap: "60px",
+                  gap: "10px",
                 }}
               >
                 <button
