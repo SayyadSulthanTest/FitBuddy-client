@@ -148,8 +148,9 @@ const ChallengeBoxPrivateGroup = ({ showCalender, id }) => {
     <div
       className="left-side"
       style={{
-        width: "60%",
-        padding: showCalender ? "24px 5px 24px 24px" : "24px",
+        width: "42%",
+        minWidth: "350px",
+        padding: "24px",
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
@@ -159,35 +160,6 @@ const ChallengeBoxPrivateGroup = ({ showCalender, id }) => {
         height: "90vh",
       }}
     >
-      <div
-        className="box calendar"
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          gap: "8px",
-          alignItems: "center",
-          height: "60%",
-        }}
-      >
-        {selectedChallenge && (
-          <>
-            <h2>{selectedChallenge && selectedChallenge.name}</h2>
-            {/* <h2>Fitness Group Challenge</h2> */}
-            <div
-              style={{
-                flexGrow: 1,
-                border: "2px solid white",
-                background: "white",
-              }}
-            >
-              <DateCalendarServerRequest
-                progress={progress}
-                challenge={selectedChallenge}
-              />
-            </div>
-          </>
-        )}
-      </div>
       <div
         className="box challenges"
         style={{
@@ -206,7 +178,7 @@ const ChallengeBoxPrivateGroup = ({ showCalender, id }) => {
             +
           </button>
         </h2>
-        <div style={{ height: "80%", overflowY: "auto" }}>
+        <div style={{ height: "40vh", overflowY: "auto" }}>
           {challenges.map((challenge) => (
             <div
               key={challenge._id}
@@ -255,12 +227,48 @@ const ChallengeBoxPrivateGroup = ({ showCalender, id }) => {
                 </button>
               )}
 
-              <button onClick={() => handleJoinChallenge(challenge._id)}>
-                {!challenge.joined && "join"}
+              <button
+                onClick={() => handleJoinChallenge(challenge._id)}
+                style={{
+                  borderRadius: "10px",
+                  padding: "4px 8px",
+                  color: "lightgreen",
+                }}
+              >
+                {!challenge.joined && "JOIN"}
               </button>
             </div>
           ))}
         </div>
+      </div>
+      <div
+        className="box calendar"
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "8px",
+          alignItems: "center",
+          height: "60%",
+        }}
+      >
+        {selectedChallenge && (
+          <>
+            <h2>{selectedChallenge && selectedChallenge.name}</h2>
+            {/* <h2>Fitness Group Challenge</h2> */}
+            <div
+              style={{
+                flexGrow: 1,
+                border: "2px solid white",
+                background: "white",
+              }}
+            >
+              <DateCalendarServerRequest
+                progress={progress}
+                challenge={selectedChallenge}
+              />
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

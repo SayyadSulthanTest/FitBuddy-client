@@ -85,6 +85,7 @@ const UploadImage = ({ picUrl, changePicUrl }) => {
         <input
           ref={imgRef}
           type="file"
+          required
           id=""
           style={{
             borderRadius: "1rem",

@@ -160,9 +160,11 @@ const Home = () => {
             </div>
             <h1 style={{ fontSize: "10vw" }}>BUDDY</h1>
           </div>
-          <h2 style={{ textAlign: "center", fontSize: "1.8rem" }}>
-            Monitor fitness journey through groups, set challenges, and invite
-            friends for personalized motivation{" "}
+          <h2
+            style={{ textAlign: "center", fontSize: "1.8rem", color: "black" }}
+          >
+            Create groups, challenges and invite friends to stay consistent
+            together in a vibrant community and empower your fitness journey
           </h2>
         </section>
       )}

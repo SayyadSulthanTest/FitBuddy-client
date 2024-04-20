@@ -4,10 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { login, logout, updateUser } from "../../slices/authSlice";
 import axios from "axios";
+import SampleCalendar from "../../components/SampleCalendar.jsx";
 import SearchUser from "../../components/SearchUser/SearchUser";
 import ChallengeBoxPrivateGroup from "../../components/challengeBoxPrivGroup/ChallengeBoxPrivateGroup";
 const API_URL = import.meta.env.VITE_API_URL;
-
+import Loading from "../../components/loading/Loading.jsx";
 const PrivateGroup = () => {
   const user = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -160,7 +161,7 @@ const PrivateGroup = () => {
           textAlign: "center",
         }}
       >
-        <h2>Loading...</h2>
+        <Loading />
       </div>
     );
   }
@@ -181,25 +182,19 @@ const PrivateGroup = () => {
           style={{
             display: "flex",
             justifyContent: "space-between",
+            flexWrap: "wrap",
             padding: "0 2vw",
             height: "90vh",
             // border: "2px solid white",
           }}
         >
-          {showCalender && (
-            <ChallengeBoxPrivateGroup
-              showCalender={showCalender}
-              challenges={challenges}
-              setChallenges={setChallenges}
-              id={id}
-            />
-          )}
           <div
             className="right-side"
             style={{
               height: "90vh",
-              width: showCalender ? "54%" : "80%",
-              padding: showCalender ? "24px 24px 24px 5px" : "24px",
+              minWidth: "350px",
+              width: "54%",
+              padding: "24px",
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
@@ -233,14 +228,22 @@ const PrivateGroup = () => {
                 <button
                   className="view-members-btn"
                   onClick={handleShowMembers}
-                  style={{ padding: "8px 20px" }}
+                  style={{
+                    padding: "6px 12px",
+                    borderRadius: "10px",
+                    backgroundColor: "lightgrey",
+                  }}
                 >
                   <strong>See Members</strong>
                 </button>
                 <button
                   className="add-member-btn"
                   onClick={handleAddMember}
-                  style={{ padding: "8px 20px" }}
+                  style={{
+                    padding: "6px 12px",
+                    borderRadius: "10px",
+                    backgroundColor: "lightgrey",
+                  }}
                 >
                   <strong>Add Members</strong>
                 </button>
@@ -260,7 +263,7 @@ const PrivateGroup = () => {
                       minWidth: "70vw",
                       backgroundColor: "black",
                       color: "white",
-                      // border: "8px solid white",
+                      border: "2px solid gold",
                       transform: "translate(-50%, -50%)",
                       zIndex: 10,
                     }}
@@ -297,7 +300,11 @@ const PrivateGroup = () => {
               <h1>
                 <button
                   onClick={() => history(`/groups/${id}/createchallenge`)}
-                  style={{ padding: "2px 10px", backgroundColor: "green" }}
+                  style={{
+                    padding: "2px 10px",
+                    backgroundColor: "green",
+                    borderRadius: "10px",
+                  }}
                 >
                   {" "}
                   <strong> Create Challenge + </strong>
@@ -307,22 +314,32 @@ const PrivateGroup = () => {
               <p></p>
             )}
 
-            <div className="box invite-friends" style={{ width: "50%" }}>
+            <div className="box invite-friends">
               <h2>Invite Friends</h2>
               <input
                 type="email"
                 placeholder="Enter friend's email: friend@example.com"
                 style={{ fontWeight: "bold", width: "70%" }}
               />
-              <button className="send-invite-btn">
+              <button
+                className="send-invite-btn"
+                style={{ borderRadius: "10px", padding: "4px 8px" }}
+              >
                 <strong>Send Invite</strong>
               </button>
             </div>
           </div>
+          {!showCalender && <SampleCalendar />}
+          {showCalender && (
+            <ChallengeBoxPrivateGroup
+              showCalender={showCalender}
+              challenges={challenges}
+              setChallenges={setChallenges}
+              id={id}
+            />
+          )}
         </div>
       </main>
-
-      <footer>{/* Footer content  */}</footer>
     </div>
   );
 };

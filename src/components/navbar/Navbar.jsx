@@ -144,20 +144,27 @@ const Navbar = ({ logoutUser }) => {
                   style={{
                     textDecoration: "none",
                     color: "black",
+                    fontSize: "1rem",
+                    textAlign: "center",
+                    fontWeight: "bold",
+                    paddingLeft: "8px",
                   }}
                 >
-                  Profile
+                  PROFILE
                 </Link>
               </MenuItem>
             )}
             <MenuItem onClick={handleMenuClose}>
               {userData.isLoggedIn ? (
-                <Button sx={{ color: "black" }} onClick={handleLogout}>
-                  Logout
+                <Button
+                  sx={{ color: "black", fontSize: "1rem" }}
+                  onClick={handleLogout}
+                >
+                  LOGOUT
                 </Button>
               ) : (
                 <Button sx={{ color: "black" }} onClick={handleOpenSignupModal}>
-                  Signup
+                  SIGNUP
                 </Button>
               )}
             </MenuItem>

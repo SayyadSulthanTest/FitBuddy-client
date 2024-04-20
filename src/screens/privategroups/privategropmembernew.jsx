@@ -16,7 +16,7 @@ const GroupPage = () => {
 
   useEffect(() => {
     setLoading(true);
-    console.log("Inside usueEffect of Member List");
+    // console.log("Inside usueEffect of Member List");
     if (!id) {
       history("/");
       return;
@@ -59,7 +59,7 @@ const GroupPage = () => {
         minHeight: "100vh",
       }}
     >
-      <h2>Private Member List</h2>
+      <h2>{group}</h2>
       <div
         className="member-list"
         id="memberList"
@@ -77,13 +77,13 @@ const GroupPage = () => {
             style={{
               display: "flex",
               justifyContent: "space-between",
-              width: "auto",
-              minWidth: "27%",
+              minWidth: "350px",
+              width: "48%",
               alignItems: "center",
-              padding: "6px 26px 6px 12px",
+              padding: "6px 26px 6px 6px",
               marginTop: "2vh",
               backgroundColor: getRandomColor(),
-              borderRadius: "100px 0 0 100px",
+              borderRadius: "100px 20px 20px 100px",
             }}
           >
             <img
@@ -98,8 +98,8 @@ const GroupPage = () => {
                 justifyContent: "space-evenly",
               }}
             >
-              <p>{member.name}</p>
-              <p>{member.bio ? member.bio : " Foo"}</p>
+              <h2>{member.name}</h2>
+              <p>{member.bio ? member.bio : "Stay Fit"}</p>
             </div>
           </div>
         ))}
