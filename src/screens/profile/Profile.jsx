@@ -304,10 +304,7 @@ const Profile = () => {
                           }}
                         >
                           <strong>
-                            {" "}
-                            {group.admin === userData.id
-                              ? "Delete Group"
-                              : "Leave Group"}
+                            {group.admin === userData.id ? "Delete" : "Leave"}
                           </strong>
                         </button>
                       </div>

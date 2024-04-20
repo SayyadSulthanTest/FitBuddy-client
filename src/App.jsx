@@ -48,7 +48,6 @@ const App = () => {
         const userData = jwtDecode(token);
         setUser(userData);
         const { name, email, pic, id } = userData;
-        // console.log(name, email, pic, _id);
         dispatch(updateUser({ name, email, pic, id }));
         dispatch(login());
         setLoading(false);
@@ -60,7 +59,6 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    // console.log(user);
     setLoading(false);
   }, [user, loading]);
 
@@ -79,7 +77,7 @@ const App = () => {
         <Navbar
           /* isLoggedIn={user ? true : false}*/ logoutUser={handleLogout}
         />
-        <ToastContainer />
+        <ToastContainer position="bottom-center" />
         <video autoPlay muted loop id="bg-video">
           <source
             // src="https://videos.pexels.com/video-files/4325592/4325592-uhd_4096_2160_25fps.mp4"
@@ -100,10 +98,6 @@ const App = () => {
             <Route path="/profile" element={<ProtectedRoutes />}>
               <Route path="/profile" Component={Profile} />
             </Route>
-            {/* </>
-                        ) : (
-                            <Redirect to="/" />
-                        )} */}
             <Route path="/creategroup" element={<CreateGroup />} />{" "}
             <Route
               path="/groups/:id/createchallenge"

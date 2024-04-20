@@ -223,13 +223,20 @@ const PrivateGroup = () => {
               <p>{groupData.description}</p>
               <p>Members Joined: {groupMembers.length}</p>
               <div
-                style={{ display: "flex", padding: "6px 30px", gap: "60px" }}
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  padding: "6px 30px",
+                  gap: "60px",
+                }}
               >
                 <button
                   className="view-members-btn"
                   onClick={handleShowMembers}
                   style={{
                     padding: "6px 12px",
+                    minWidth: "200px",
+                    width: "40%",
                     borderRadius: "10px",
                     backgroundColor: "lightgrey",
                   }}
@@ -242,6 +249,9 @@ const PrivateGroup = () => {
                   style={{
                     padding: "6px 12px",
                     borderRadius: "10px",
+                    width: "40%",
+                    minWidth: "200px",
+
                     backgroundColor: "lightgrey",
                   }}
                 >
@@ -319,11 +329,20 @@ const PrivateGroup = () => {
               <input
                 type="email"
                 placeholder="Enter friend's email: friend@example.com"
-                style={{ fontWeight: "bold", width: "70%" }}
+                style={{
+                  fontWeight: "bold",
+                  width: "70%",
+                  minWidth: "300px",
+                  margin: "auto",
+                }}
               />
               <button
                 className="send-invite-btn"
-                style={{ borderRadius: "10px", padding: "4px 8px" }}
+                style={{
+                  borderRadius: "10px",
+                  padding: "4px 8px",
+                  margin: "auto",
+                }}
               >
                 <strong>Send Invite</strong>
               </button>

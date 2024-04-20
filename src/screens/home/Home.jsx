@@ -170,7 +170,7 @@ const Home = () => {
       )}
       {user.isLoggedIn && (
         <>
-          <h1 style={{ textAlign: "center" }}>
+          <h1 style={{ textAlign: "center", color: "black" }}>
             Welcome to fitbuddy, <em>{user?.name}</em>{" "}
           </h1>
           {/* <p>{Add some api to fetch fitness quotes to display after user login }</p> */}
@@ -323,7 +323,7 @@ const Home = () => {
         id="groups-container"
         style={{ minHeight: "60vh", paddingTop: "6vh" }}
       >
-        <h2 style={{ textAlign: "center", fontSize: "1.8rem" }}>
+        <h2 style={{ textAlign: "center", fontSize: "1.8rem", color: "black" }}>
           Join our active community of fitness enthusiasts and explore public
           groups!
         </h2>

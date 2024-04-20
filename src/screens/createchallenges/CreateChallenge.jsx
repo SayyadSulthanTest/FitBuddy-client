@@ -126,6 +126,7 @@ const CreateChallenge = () => {
         backgroundColor: "black",
         color: "white",
         minHeight: "100vh",
+        minWidth: "350px",
       }}
     >
       <div
@@ -247,12 +248,13 @@ const CreateChallenge = () => {
           <div
             style={{
               display: "flex",
-              justifyContent: "flex-start",
+              justifyContent: "center",
+              flexWrap: "wrap",
               gap: "30px",
               padding: "10px 0",
             }}
           >
-            <div>
+            <div style={{ minWidth: "250px" }}>
               <label htmlFor="startDate">Start Date: </label>
 
               <input
@@ -265,7 +267,7 @@ const CreateChallenge = () => {
                 min={new Date().toISOString().split("T")[0]} // Set min attribute to today's date
               />
             </div>
-            <div>
+            <div style={{ minWidth: "250px" }}>
               <label htmlFor="endDate">End Date: </label>
               <input
                 label="End Date"
@@ -292,6 +294,7 @@ const CreateChallenge = () => {
               color: "white",
               fontWeight: "bold",
               width: "50%",
+              minWidth: "250px",
               alignSelf: "center",
             }}
             onClick={handleCreateChallenge}
