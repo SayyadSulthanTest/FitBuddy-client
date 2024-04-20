@@ -67,21 +67,29 @@ const EditProfile = () => {
         id="editprofile-container"
         style={{
           minHeight: "80vh",
-          padding: "60px 20px",
+          padding: "5rem 1.25rem",
           backgroundColor: "black",
           color: "white",
         }}
       >
         <h2 style={{ textAlign: "center" }}>Edit Profile</h2>
-        <UploadImage picUrl={pic} changePicUrl={setPic} />
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            padding: "2rem 0",
+          }}
+        >
+          <UploadImage picUrl={pic} changePicUrl={setPic} />
+        </div>
         <form
           onSubmit={editProfileHandler}
           style={{
-            marginTop: "20px",
+            marginTop: "1.5rem",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            gap: "20px",
+            gap: "1.3rem",
           }}
         >
           {/* Render the UploadImage component for profile picture */}
@@ -108,7 +116,7 @@ const EditProfile = () => {
                 padding: "4px",
                 backgroundColor: "black",
                 color: "pink",
-                fontSize: "20px",
+                fontSize: "1.25rem",
                 borderTop: "none",
                 borderLeft: "none",
                 borderRight: "none",
@@ -129,7 +137,7 @@ const EditProfile = () => {
                 padding: "4px 10px",
                 backgroundColor: "black",
                 color: "pink",
-                fontSize: "20px",
+                fontSize: "1.25rem",
                 borderTop: "none",
                 borderLeft: "none",
                 borderRight: "none",
@@ -150,7 +158,7 @@ const EditProfile = () => {
                 padding: "4px 10px",
                 backgroundColor: "black",
                 color: "pink",
-                fontSize: "20px",
+                fontSize: "1.25rem",
                 borderTop: "none",
                 borderLeft: "none",
                 borderRight: "none",
@@ -171,7 +179,7 @@ const EditProfile = () => {
                 padding: "4px 10px",
                 backgroundColor: "black",
                 color: "pink",
-                fontSize: "20px",
+                fontSize: "1.25rem",
                 borderTop: "none",
                 borderLeft: "none",
                 borderRight: "none",
@@ -192,7 +200,7 @@ const EditProfile = () => {
                 padding: "4px 10px",
                 backgroundColor: "black",
                 color: "pink",
-                fontSize: "20px",
+                fontSize: "1.25rem",
                 borderTop: "none",
                 borderLeft: "none",
                 borderRight: "none",
@@ -206,10 +214,12 @@ const EditProfile = () => {
             type="submit"
             style={{
               backgroundColor: "#00647A",
-              padding: "4px 80px",
+              // backgroundColor: "lightgreen",
+              padding: "0.2rem 2rem",
               margin: "auto",
               color: "white",
               fontWeight: "bold",
+              borderRadius: "0.5rem",
             }}
           >
             Save Details

@@ -9,11 +9,14 @@ const CreateGroup = () => {
       style={{
         display: "flex",
         flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
         gap: "10px",
         textAlign: "center",
         backgroundColor: "black",
         color: "white",
         minHeight: "100vh",
+        width: "100vw",
       }}
     >
       <img
@@ -21,10 +24,10 @@ const CreateGroup = () => {
         alt="creategroupbackground"
         style={{ width: "100%", height: "250px", objectFit: "cover" }}
       />
-      <Typography variant="h4">
+      <Typography variant="h4" sx={{ fontSize: "1.3rem", textAlign: "center" }}>
         Get your fitness squad together effortlessly!
       </Typography>
-      <Typography>
+      <Typography sx={{ padding: "1rem" }}>
         Join our vibrant challenges{" "}
         <Link
           to="/joingroup"

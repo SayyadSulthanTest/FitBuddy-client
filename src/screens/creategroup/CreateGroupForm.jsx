@@ -36,6 +36,7 @@ const CreateGroupForm = () => {
 
       const { data } = await axios.post(`${API_URL}/groups`, body, config);
       console.log("data: ", data);
+      // const groupId = data
       // handleReset();
       navigate("/");
       // navigate('/createchallenge');
@@ -45,10 +46,26 @@ const CreateGroupForm = () => {
   };
 
   return (
-    <div className="creategroup-container">
+    <div
+      className="creategroup-container"
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        width: "100vw",
+      }}
+    >
       <div
         className="creategroup-form"
-        style={{ width: "50%", margin: "auto" }}
+        style={{
+          width: "50%",
+          margin: "auto",
+          minWidth: "350px",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
       >
         <div
           style={{ width: "90%", backgroundColor: "#CFDBF8", color: "black" }}
@@ -63,11 +80,11 @@ const CreateGroupForm = () => {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
-            gap: "8px",
+            gap: "0.5rem",
             width: "90%",
             backgroundColor: "#CFDBF8",
-            padding: "12px",
-            marginBottom: "40px",
+            padding: "0.6rem",
+            marginBottom: "2.4rem",
           }}
         >
           <TextField
@@ -128,10 +145,11 @@ const CreateGroupForm = () => {
           <button
             type="submit"
             style={{
-              padding: "10px 40px",
+              padding: "0.6rem 2.5rem",
               backgroundColor: "#00647A",
               color: "white",
               fontWeight: "bold",
+              borderRadius: "0.7rem",
             }}
           >
             Create Group

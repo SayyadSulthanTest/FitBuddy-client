@@ -48,6 +48,7 @@ const Footer = () => {
             justifyContent: "center",
             alignItems: "center",
             gap: "10px",
+            flexWrap: "wrap",
           }}
         >
           <form
@@ -56,7 +57,8 @@ const Footer = () => {
               marginTop: "20px",
               display: "flex",
               flexDirection: "column",
-              gap: "16px",
+              gap: "1rem",
+              minWidth: "300px",
               width: "55%",
               paddingBottom: "60px",
             }}
@@ -115,14 +117,14 @@ const Footer = () => {
               name="contactMessage"
               id="contactMessage"
               cols="16"
-              rows="10"
+              rows="5"
               placeholder="Message"
               value={contactMessage}
               style={{
-                padding: "4px 10px",
+                padding: "0.2rem 0.6rem",
                 backgroundColor: "black",
                 color: "pink",
-                fontSize: "20px",
+                fontSize: "1.4rem",
                 borderTop: "none",
                 borderLeft: "none",
                 borderRight: "none",
@@ -148,7 +150,7 @@ const Footer = () => {
               Submit
             </button>
           </form>
-          <div style={{ width: "35%" }}>
+          <div style={{ width: "35%", minWidth: "350px" }}>
             <img
               src="/Assets/Images/contactUsImage.png"
               alt="contactUs"

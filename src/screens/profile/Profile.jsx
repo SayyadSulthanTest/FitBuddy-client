@@ -162,7 +162,7 @@ const Profile = () => {
     <div
       className="profile-container"
       style={{
-        padding: "10vh",
+        paddingTop: "5rem",
         backgroundColor: "black",
         color: "white",
         minHeight: "100vh",
@@ -184,6 +184,7 @@ const Profile = () => {
               style={{
                 display: "flex",
                 justifyContent: "flex-start",
+                flexWrap: "wrap",
                 gap: "10px",
               }}
             >
@@ -193,6 +194,7 @@ const Profile = () => {
                   display: "flex",
                   flexDirection: "column",
                   gap: "2px",
+                  minWidth: "400px",
                 }}
               >
                 <h4>{userData?.name}</h4>
@@ -222,75 +224,95 @@ const Profile = () => {
           <Paper
             sx={{ padding: "10px", backgroundColor: "black", color: "white" }}
           >
-            <h3 style={{ textAlign: "center" }}>Groups</h3>
+            <h3>Groups</h3>
 
             <div
               style={{
                 display: "flex",
                 padding: "10px",
                 gap: "8px",
-                justifyContent: "space-between",
+                justifyContent: "space-around",
                 flexWrap: "wrap",
                 width: "100%",
+                paddingTop: "2rem",
               }}
             >
               {privateGroups.map((group, index) => (
                 <div
                   key={index}
                   style={{
-                    minWidth: "30%",
+                    minWidth: "300px",
+                    width: "33%",
+                    border: "2px solid gold",
+
                     display: "flex",
-                    flexDirection: "column",
+                    // flexDirection: "column",
                   }}
                   onClick={() => handleNavigatePrivateGroup(group._id)}
                 >
                   <div
                     style={{
                       display: "flex",
-                      justifyContent: "center",
-                      gap: "50px",
-                      alignItems: "center",
+                      // justifyContent: "center",
+                      gap: "1rem",
+                      // alignItems: "center",
                     }}
                   >
                     <img
                       src={group.icon}
                       alt="groupIconPic"
-                      height="100px"
-                      width="100px"
+                      height="150px"
+                      width="150px"
                       style={{ borderRadius: "6px", border: "solid 1px gold" }}
                     />
                     <div
                       style={{
                         display: "flex",
                         flexDirection: "column",
-                        justifyContent: "space-between",
+                        // justifyContent: "space-between",
+                        padding: "0.5rem",
+                        flexGrow: 1,
                       }}
                     >
-                      <h4>{group.name}</h4>
-                      <p>{group.description}</p>
+                      <div
+                        style={{
+                          flexGrow: 1,
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: "space-between",
+                          padding: "0.3rem 0",
+                        }}
+                      >
+                        <h4>{group.name}</h4>
+                        <p>{group.description}</p>
 
-                      <span>
-                        Role: {group.admin === userData.id ? "Admin" : "Member"}
-                      </span>
+                        <span>
+                          Role:{" "}
+                          {group.admin === userData.id ? "Admin" : "Member"}
+                        </span>
+
+                        <button
+                          onClick={() =>
+                            handleDeleteGroup(group.admin, group._id)
+                          }
+                          style={{
+                            color: "black",
+                            backgroundColor: "red",
+                            margin: "auto",
+                            padding: "2px 14px",
+                            borderRadius: "6px",
+                          }}
+                        >
+                          <strong>
+                            {" "}
+                            {group.admin === userData.id
+                              ? "Delete Group"
+                              : "Leave Group"}
+                          </strong>
+                        </button>
+                      </div>
                     </div>
                   </div>
-                  <button
-                    onClick={() => handleDeleteGroup(group.admin, group._id)}
-                    style={{
-                      color: "black",
-                      backgroundColor: "red",
-                      margin: "auto",
-                      padding: "2px 14px",
-                      borderRadius: "6px",
-                    }}
-                  >
-                    <strong>
-                      {" "}
-                      {group.admin === userData.id
-                        ? "Delete Group"
-                        : "Leave Group"}
-                    </strong>
-                  </button>
                 </div>
               ))}
             </div>

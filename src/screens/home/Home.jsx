@@ -16,9 +16,7 @@ import { useDispatch } from "react-redux";
 import { IconButton } from "@mui/material";
 import Loading from "../../components/loading/Loading.jsx";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import UploadImage from "../../components/UploadImage.jsx";
 const API_URL = import.meta.env.VITE_API_URL;
-
 const ExploreButton = () => {
   const handleExploreClick = () => {
     // Scroll to the target section groups
@@ -39,8 +37,8 @@ const ExploreButton = () => {
       sx={{
         color: "#f542c5",
         border: "2px solid white",
-        padding: "8px 20px",
-        borderRadius: "20px",
+        padding: "0.5rem 1.25rem",
+        borderRadius: "1.25rem",
         transition: "box-shadow 0.1s",
         "&:hover": {
           boxShadow: "0px 3px 6px rgba(255, 255, 255, 0.5)",
@@ -107,63 +105,14 @@ const Home = () => {
     <div
       id="homepage-container"
       className="homepage-container"
-      style={{ color: "white", paddingTop: "10vh" }}
+      style={{ color: "white", paddingTop: "5rem" }}
     >
-      {/* <UploadImage /> */}
-      {/* <section
-        id="landingpage-banner"
-        style={{
-          padding: "4vh",
-          display: "flex",
-          flexDirection: "column",
-          gap: "10px",
-          alignItems: "center",
-          justifyContent: "space-around",
-          minHeight: "90vh",
-        }}
-      >
-        {/* <video autoplay muted loop id="video-bg">
-          <source
-            src="https://videos.pexels.com/video-files/5593047/5593047-sd_640_360_24fps.mp4"
-            type="video/mp4"
-          />
-        </video> */}
-      {/* <img
-          src="/Assets/Images/websiteLogoHome.jpg"
-          alt="websitelogo"
-          style={{ width: "300px" }}
-        />
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "8px",
-            fontSize: "62px",
-            lineHeight: "72.66px",
-            justifyContent: "flex-start",
-            paddingTop: "5vh",
-            alignItems: "center",
-            fontFamily: "Roboto",
-            fontWeight: "bold",
-            flexGrow: 1,
-          }}
-        >
-          <p>Achieve your fitness</p>
-          <p>goals and boost your</p>
-          <p>well-being</p>
-        </div>
-      </section> */}
-
       {!user.isLoggedIn && (
         <section
           id="aboutus-container"
           style={{
-            // display: "flex",
-            // flexDirection: "column",
-            // justifyContent: "center",
-            // alignItems: "center",
-            padding: "20px",
-            minHeight: "40vh",
+            padding: "1.25rem",
+            // minHeight: "40vh",
           }}
         >
           <div
@@ -171,7 +120,7 @@ const Home = () => {
               backgroundClip: "text",
               color: "transparent",
               WebkitBackgroundClip: "text",
-              marginBottom: "20px",
+              marginBottom: "2rem",
               textAlign: "center",
               backgroundImage:
                 "linear-gradient(to bottom, #927E13,#70E916,#FFDB17)",
@@ -184,42 +133,37 @@ const Home = () => {
               style={{
                 display: "flex",
                 flexDirection: "column",
-                textAlign: "justify",
-                gap: "2px",
+                alignItems: "center",
+                textAlign: "center",
+                justifyContent: "center",
+                gap: "0",
               }}
             >
               <h1
                 style={{
-                  fontSize: "50px",
-                  lineHeight: "42px",
-                  margin: "0px",
-                  padding: "0px",
+                  fontSize: "2.5vw",
+                  padding: "0",
+                  margin: "0",
                 }}
               >
                 We at
               </h1>
               <h1
                 style={{
-                  fontSize: "130px",
-                  lineHeight: "104px",
-                  margin: "0px",
-                  padding: "0px",
+                  fontSize: "6vw",
+                  padding: "0",
+                  margin: "0",
                 }}
               >
                 FIT
               </h1>
             </div>
-            <h1 style={{ fontSize: "200px" }}>BUDDY</h1>
+            <h1 style={{ fontSize: "10vw" }}>BUDDY</h1>
           </div>
-          <h1 style={{ fontSize: "62px", textAlign: "center" }}>
-            {/* <strong>
-              Accountability is the key to progress, and we help you stay
-              connected with your buddies in your fitness journey
-            </strong> */}
-            <p>Monitor fitness journey through groups, set</p>{" "}
-            <p>challenges, and invite friends for </p>{" "}
-            <p>personalized motivation</p>
-          </h1>
+          <h2 style={{ textAlign: "center", fontSize: "1.8rem" }}>
+            Monitor fitness journey through groups, set challenges, and invite
+            friends for personalized motivation{" "}
+          </h2>
         </section>
       )}
       {user.isLoggedIn && (
@@ -329,12 +273,12 @@ const Home = () => {
       <section
         id="publicprivategroupnav"
         style={{
-          minHeight: "100vh",
+          minHeight: "60vh",
           marginTop: "5vh",
           fontFamily: "Roboto",
         }}
       >
-        <header
+        {/* <header
           style={{
             display: "flex",
             flexDirection: "column",
@@ -369,15 +313,15 @@ const Home = () => {
           >
             FITBUDDY
           </p>
-        </header>
+        </header> */}
         <GroupBox />
       </section>
       {/* {!user.isLoggedIn && ( */}
       <section
         id="groups-container"
-        style={{ minHeight: "100vh", paddingTop: "100px" }}
+        style={{ minHeight: "60vh", paddingTop: "6vh" }}
       >
-        <h2 style={{ textAlign: "center", fontSize: "30px" }}>
+        <h2 style={{ textAlign: "center", fontSize: "1.8rem" }}>
           Join our active community of fitness enthusiasts and explore public
           groups!
         </h2>

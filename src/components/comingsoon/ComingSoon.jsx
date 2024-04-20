@@ -10,6 +10,7 @@ const ComingSoon = () => {
       style={{
         // backgroundColor: "skyblue",
         display: "flex",
+        flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
         paddingTop: "10vh",
@@ -17,9 +18,16 @@ const ComingSoon = () => {
         width: "100vw",
       }}
     >
-      <h1>We're working on this feature. It will be available soon. </h1>
+      <h1 style={{ padding: "2vw 10vw", textAlign: "center" }}>
+        We're working on this feature. It will be available soon.{" "}
+      </h1>
       <button
-        style={{ color: "black", backgroundColor: "inherit" }}
+        style={{
+          color: "black",
+          backgroundColor: "inherit",
+          padding: "0.2rem 0.8rem",
+          borderRadius: "0.7rem",
+        }}
         onClick={handleNavHome}
       >
         <strong>Back</strong>{" "}

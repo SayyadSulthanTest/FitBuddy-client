@@ -24,25 +24,11 @@ const Navbar = ({ logoutUser }) => {
   const [openLoginModal, setOpenLoginModal] = React.useState(false);
   const [openSignupModal, setOpenSignupModal] = React.useState(false);
   const userData = useSelector((state) => state.auth);
-  // console.log(userData);
   const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const isNotHome = location.pathname !== "/";
-
-  // useEffect(() => {
-  //   try {
-  //     const token = localStorage.getItem("token");
-  //     if (token) {
-  //       const userData = jwtDecode(token);
-
-  //     }
-  //   } catch (err) {
-  //     console.error(err);
-  //     setLoading(false);
-  //   }
-  // });
 
   const handleMenuOpen = (e) => {
     setAnchorEl(e.currentTarget);
@@ -76,11 +62,7 @@ const Navbar = ({ logoutUser }) => {
     localStorage.removeItem("userData");
     logoutUser();
     navigate("/");
-    // logout();
-    // setOpenLoginModal(true);
-    // Add any other logout logic here
   };
-  // console.log(isLoggedIn);
   return (
     <>
       <AppBar
@@ -96,9 +78,7 @@ const Navbar = ({ logoutUser }) => {
             variant="h6"
             component="div"
             sx={{ display: { xs: "none", sm: "block" }, flexGrow: 1 }}
-          >
-            {/* Add your navbar links here */}
-          </Typography>
+          ></Typography>
 
           <Typography
             variant="h6"
@@ -109,21 +89,31 @@ const Navbar = ({ logoutUser }) => {
               <>
                 <Link
                   to="/profile"
-                  style={{ textDecoration: "none", color: "inherit" }}
+                  style={{
+                    textDecoration: "none",
+                    color: isNotHome ? "white" : "black",
+                    fontSize: "1rem",
+                  }}
                 >
-                  <strong>Profile</strong>
+                  <strong>PROFILE</strong>
                 </Link>
-                <Button color="inherit" onClick={handleLogout}>
-                  <strong>Logout</strong>
+                <Button onClick={handleLogout}>
+                  <strong style={{ color: isNotHome ? "white" : "black" }}>
+                    Logout
+                  </strong>
                 </Button>
               </>
             ) : (
               <>
-                <Button color="inherit" onClick={handleOpenSignupModal}>
-                  <strong>Signup</strong>
+                <Button onClick={handleOpenSignupModal}>
+                  <strong style={{ color: isNotHome ? "white" : "black" }}>
+                    Signup
+                  </strong>
                 </Button>
-                <Button color="inherit" onClick={handleOpenLoginModal}>
-                  <strong>Login</strong>
+                <Button onClick={handleOpenLoginModal}>
+                  <strong style={{ color: isNotHome ? "white" : "black" }}>
+                    Login
+                  </strong>
                 </Button>
               </>
             )}
@@ -132,9 +122,11 @@ const Navbar = ({ logoutUser }) => {
           <IconButton
             size="large"
             edge="end"
-            color="inherit"
             aria-label="menu"
-            sx={{ display: { xs: "block", sm: "none" } }}
+            sx={{
+              color: isNotHome ? "white" : "black",
+              display: { xs: "block", sm: "none" },
+            }}
             onClick={handleMenuOpen}
           >
             <MenuIcon />
@@ -149,7 +141,10 @@ const Navbar = ({ logoutUser }) => {
               <MenuItem onClick={handleMenuClose}>
                 <Link
                   to="/profile"
-                  style={{ textDecoration: "none", color: "inherit" }}
+                  style={{
+                    textDecoration: "none",
+                    color: "black",
+                  }}
                 >
                   Profile
                 </Link>
@@ -157,22 +152,18 @@ const Navbar = ({ logoutUser }) => {
             )}
             <MenuItem onClick={handleMenuClose}>
               {userData.isLoggedIn ? (
-                <Button color="inherit" onClick={handleLogout}>
+                <Button sx={{ color: "black" }} onClick={handleLogout}>
                   Logout
                 </Button>
               ) : (
-                <Button color="inherit" onClick={handleOpenSignupModal}>
+                <Button sx={{ color: "black" }} onClick={handleOpenSignupModal}>
                   Signup
                 </Button>
               )}
             </MenuItem>
             <MenuItem onClick={handleMenuClose}>
-              {userData.isLoggedIn ? (
-                <Button color="inherit" onClick={handleLogout}>
-                  Logout
-                </Button>
-              ) : (
-                <Button color="inherit" onClick={handleOpenLoginModal}>
+              {!userData.isLoggedIn && (
+                <Button sx={{ color: "black" }} onClick={handleOpenLoginModal}>
                   Login
                 </Button>
               )}

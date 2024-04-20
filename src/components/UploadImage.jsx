@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-const UploadImage = ({picUrl, changePicUrl}) => {
+const UploadImage = ({ picUrl, changePicUrl }) => {
   const imgRef = useRef("");
   // const [pic, setPic] = useState(picUrl);
   console.log(import.meta.env.VITE_CLOUDINARY_URL);
@@ -66,11 +66,51 @@ const UploadImage = ({picUrl, changePicUrl}) => {
   };
 
   return (
-    <div>
+    <div
+      style={{
+        minWidth: "300px",
+        margin: "auto",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+      }}
+    >
       <img src={picUrl} alt="Image" srcSet="" height="200px" width="200px" />
-      <form action="" method="post" onSubmit={handleUpoad}>
-        <input ref={imgRef} type="file" id="" />
-        <button type="submit"> Upload</button>
+      <form
+        action=""
+        method="post"
+        onSubmit={handleUpoad}
+        style={{ width: "100%" }}
+      >
+        <input
+          ref={imgRef}
+          type="file"
+          id=""
+          style={{
+            borderRadius: "1rem",
+            border: "2px solid grey",
+            minWidth: "200px",
+            width: "90%",
+          }}
+        />
+        <p>
+          <small style={{ fontSize: "0.6rem" }}>
+            *Note: Kindly upload the image
+          </small>
+        </p>
+        <button
+          style={{
+            padding: "0.1rem 1rem",
+            borderRadius: "0.5rem",
+            color: "black",
+            fontWeight: "bold",
+            backgroundColor: "grey",
+          }}
+          type="submit"
+        >
+          {" "}
+          Upload
+        </button>
       </form>
     </div>
   );
