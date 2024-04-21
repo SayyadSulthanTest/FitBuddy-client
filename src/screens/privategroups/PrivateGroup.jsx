@@ -21,6 +21,7 @@ const PrivateGroup = () => {
   const [groupData, setGroupData] = useState(null);
   const [challenges, setChallenges] = useState([]);
   const [searchableUsers, setSearchableUsers] = useState([]);
+  const [alreadyMember, setAlreadyMember] = useState(false);
   //   const [isGroupUpdated, setIsGroupUpdated] = useState(false);
 
   const handleGetAllData = async () => {
@@ -80,54 +81,17 @@ const PrivateGroup = () => {
       history("/");
     }
     handleGetAllData();
+    const checkMemberExists = async (userId, groupMembers) => {
+      let resultArray = groupMembers.map((member) => member._id === userId);
+      if (resultArray) {
+        setAlreadyMember(true);
+      } else {
+        setAlreadyMember(false);
+      }
+    };
+
+    checkMemberExists(user.id, groupMembers);
   }, [isLoading]);
-  // useEffect(() => {
-  //   const token = localStorage.getItem("token");
-  //   const config = {
-  //     headers: {
-  //       Authorization: `Bearer ${token}`,
-  //       "Content-Type": "application/json",
-  //     },
-  //   };
-
-  //   try {
-  //     axios
-  //       .get(`${API_URL}/groups/${id}`, config)
-  //       .then(({ data }) => {
-  //         setGroupData(data.data);
-  //         if (data.data && data.data.users) {
-  //           console.log("Fetching group members from the API");
-  //           setGroupMembers(data.data.users);
-  //         }
-  //       })
-  //       .then(() =>
-  //         axios.get(`${API_URL}/challenges/${id}`, config).then((res) => {
-  //           if (res.data.data.length > 0) {
-  //             setShowCalender(true);
-  //             setChallenges(res.data.data);
-  //           }
-  //           setIsLoading(false);
-  //         })
-  //       );
-
-  //     axios
-  //       .get(`${API_URL}/user`, config)
-  //       .then((res) => {
-  //         setSearchableUsers(
-  //           filterUsersNotInArray(res.data.data, groupMembers)
-  //         );
-  //       })
-  //       .catch((err) => console.log("Error in getting all users :", err));
-  //   } catch (err) {
-  //     console.log("err in private group: ", err);
-  //     alert("something went wrong...");
-  //     setIsLoading(false);
-  //     history("/");
-  //   }
-  // }, [groupMembers]);
-  //   useEffect(() => {
-  //     setIsGroupUpdated(false);
-  //   }, [isGroupUpdated]);
 
   const handleShowMembers = () => {
     history(`/privategroup/${id}/members`);
@@ -150,6 +114,47 @@ const PrivateGroup = () => {
     return users1.filter((user) => !userMap[user._id]);
   }
 
+  const addUserToGroupAPI = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      // api request and then set the other values to initial values
+      const API_URL = import.meta.env.VITE_API_URL;
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      };
+
+      const body = { users: [user.id] };
+
+      const { data } = await axios.post(
+        `${API_URL}/groups/${id}/members`,
+        body,
+        config
+      );
+      console.log("data: dshjebjervhrhr  ", data);
+      if (data) {
+        // console.log("1", selectedUsers, groupMembers);
+        setGroupMembers(data.data.users);
+
+        // console.log('2', selectedUsers, groupMembers);
+        // // setSelectedUsers([]);
+
+        // console.log('3', selectedUsers, groupMembers);
+
+        toast.success("Added to the group successfully!");
+        setAlreadyMember(true);
+      } else {
+        toast.error("Something went wrong, please try again later");
+      }
+      // handleReset();
+      // navigate(-1);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   if (isLoading) {
     return (
       <div
@@ -161,6 +166,38 @@ const PrivateGroup = () => {
         }}
       >
         <Loading />
+      </div>
+    );
+  }
+
+  if (!alreadyMember) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "8px",
+          alignItems: "center",
+          height: "50%",
+        }}
+      >
+        <h2>{groupData && groupData.name}</h2>
+        <img
+          src={groupData.icon}
+          alt="Exercise Image"
+          style={{ maxWidth: "100%", maxHeight: "65%" }}
+        />
+        <p>{groupData.description}</p>
+        <button
+          onClick={addUserToGroupAPI}
+          style={{
+            backgroundColor: "green",
+            padding: "4px 10px",
+            borderRadius: "10px",
+          }}
+        >
+          Join
+        </button>
       </div>
     );
   }
@@ -334,6 +371,8 @@ const PrivateGroup = () => {
                   width: "70%",
                   minWidth: "300px",
                   margin: "auto",
+                  borderRadius: "0.6rem",
+                  padding: "4px 8px",
                 }}
               />
               <button

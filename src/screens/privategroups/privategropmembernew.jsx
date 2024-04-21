@@ -87,7 +87,7 @@ const GroupPage = () => {
             }}
           >
             <img
-              src="/Assets/Images/userProfilePic.png"
+              src={`${member.pic}`}
               alt={`${member.name}`}
               style={{ height: "80px" }}
             />
