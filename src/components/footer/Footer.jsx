@@ -2,34 +2,38 @@ import React, { useState } from "react";
 import TeamSlider from "../ourteam/TeamSlider";
 import axios from "axios";
 import { toast } from "react-toastify";
+
+const API_URL = import.meta.env.VITE_API_URL;
 const Footer = () => {
   const [contactName, setContactName] = useState("");
   const [contactEmail, setContactEmail] = useState("");
   const [contactMessage, setContactMessage] = useState("");
-  const contactSubmitHandler = () => {
+
+  const contactSubmitHandler = async (e) => {
+    e.preventDefault();
+
+    if (!contactEmail || !contactMessage || !contactName)
+      return toast.warning("Please enter credentials!!");
     const config = {
       headers: {
+        // Authorization: Bearer ${token},
         "Content-Type": "application/json",
       },
     };
-
+    const body = {
+      name: contactName,
+      email: contactEmail,
+      message: contactMessage,
+    };
     try {
-      const body = {
-        name: contactName,
-        email: contactEmail,
-        message: contactMessage,
-      };
-
-      axios.post(`${API_URL}/query`, body, config).then(({ data }) => {
-        console.log(data.data);
-        toast.success("Recorded your response!");
-      });
+      const { data } = await axios.post(`${API_URL}/query`, body, config);
+      // console.log(data);
+      toast.success(data.message);
     } catch (err) {
-      console.log("Error in sending Query", err);
-      toast.error("Failed to submit query...");
+      // console.log(err.stack);
+      toast.error("Please try Later!!!");
     }
   };
-
   return (
     <footer style={{ backgroundColor: "inherit" }}>
       <section

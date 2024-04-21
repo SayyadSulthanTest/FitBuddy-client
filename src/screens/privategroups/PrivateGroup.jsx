@@ -225,6 +225,7 @@ const PrivateGroup = () => {
                 style={{
                   display: "flex",
                   flexWrap: "wrap",
+                  justifyContent: "center",
                   padding: "6px 30px",
                   gap: "10px",
                 }}

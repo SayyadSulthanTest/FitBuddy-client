@@ -158,6 +158,7 @@ const ChallengeBoxPrivateGroup = ({ showCalender, id }) => {
         justifyContent: "space-around",
         // border: '2px solid white',
         height: "90vh",
+        backgroundColor: "black",
       }}
     >
       <div
@@ -173,6 +174,7 @@ const ChallengeBoxPrivateGroup = ({ showCalender, id }) => {
           Challenges{" "}
           <button
             className="add-challenge-btn"
+            style={{ borderRadius: "0.5rem", backgroundColor: "green" }}
             onClick={() => history(`/groups/${id}/createchallenge`)}
           >
             +
@@ -226,17 +228,19 @@ const ChallengeBoxPrivateGroup = ({ showCalender, id }) => {
                   Update Status
                 </button>
               )}
-
-              <button
-                onClick={() => handleJoinChallenge(challenge._id)}
-                style={{
-                  borderRadius: "10px",
-                  padding: "4px 8px",
-                  color: "lightgreen",
-                }}
-              >
-                {!challenge.joined && "JOIN"}
-              </button>
+              {!challenge.joined && (
+                <button
+                  onClick={() => handleJoinChallenge(challenge._id)}
+                  style={{
+                    borderRadius: "10px",
+                    padding: "4px 8px",
+                    backgroundColor: "lightgreen",
+                    color: "black",
+                  }}
+                >
+                  "JOIN"
+                </button>
+              )}
             </div>
           ))}
         </div>
