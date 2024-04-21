@@ -34,8 +34,8 @@ const CreateGroupForm = () => {
             };
 
             // if (previewImage) body.icon = previewImage;
+            const { data } = await axios.post(`${API_URL}/groups`, body, config);
             if (data.success) {
-                const { data } = await axios.post(`${API_URL}/groups`, body, config);
                 console.log('data: ', data);
 
                 const groupId = data.data._id;

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useNavigate } from 'react-router-dom';
 import { login, logout, updateUser } from '../../slices/authSlice';
@@ -79,8 +79,8 @@ const PrivateGroup = () => {
         }
         handleGetAllData();
         const checkMemberExists = async (userId, groupMembers) => {
-            let resultArray = groupMembers.map((member) => member._id === userId);
-            if (resultArray) {
+            let resultArray = groupMembers.filter((member) => member._id === userId);
+            if (resultArray.length > 0) {
                 setAlreadyMember(true);
             } else {
                 setAlreadyMember(false);
@@ -179,7 +179,7 @@ const PrivateGroup = () => {
                 <img
                     src={groupData.icon}
                     alt="Exercise Image"
-                    style={{ maxWidth: '100%', maxHeight: '65%' }}
+                    style={{ maxWidth: '250px', maxHeight: '250px' }}
                 />
                 <p>{groupData.description}</p>
                 <button
