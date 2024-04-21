@@ -163,8 +163,8 @@ const Home = () => {
           <h2
             style={{ textAlign: "center", fontSize: "1.8rem", color: "black" }}
           >
-            Create groups, challenges and invite friends to stay consistent
-            together in a vibrant community and empower your fitness journey
+            "Create groups, challenges and invite friends to stay consistent
+            together in a vibrant community and empower your fitness journey"
           </h2>
         </section>
       )}

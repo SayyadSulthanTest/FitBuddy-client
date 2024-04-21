@@ -31,14 +31,14 @@ const UploadImage = ({ picUrl, changePicUrl }) => {
         .then((res) => res.json())
         .then((data) => {
           // alert('Data receied');
-          console.log(data);
+          console.log("cloudinary data", data);
           // setPic(data.url);
-          changePicUrl(data.url);
+          changePicUrl(data.secure_url);
           // setLoading(false);
           return data;
         })
         .catch((err) => {
-          console.log(err);
+          console.log("cloudinary error", err);
           return err;
           // setLoading(false);
         });
