@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { login, logout, updateUser } from "../../slices/authSlice";
 import axios from "axios";
-import SampleCalendar from "../../components/SampleCalendar.jsx";
 import SearchUser from "../../components/SearchUser/SearchUser";
 import ChallengeBoxPrivateGroup from "../../components/challengeBoxPrivGroup/ChallengeBoxPrivateGroup";
 const API_URL = import.meta.env.VITE_API_URL;
@@ -387,7 +386,7 @@ const PrivateGroup = () => {
               </button>
             </div>
           </div>
-          {!showCalender && <SampleCalendar />}
+          {/* {!showCalender && <SampleCalendar />} */}
           {showCalender && (
             <ChallengeBoxPrivateGroup
               showCalender={showCalender}

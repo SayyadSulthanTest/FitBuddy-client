@@ -36,11 +36,16 @@ const CreateGroupForm = () => {
 
       const { data } = await axios.post(`${API_URL}/groups`, body, config);
       console.log("data: ", data);
+      if (data.success) {
+        const groupId = data.data._id;
+        toast.success("Group created!");
+        navigate(`/privategroup/${groupId}`);
+      }
       // const groupId = data
       // handleReset();
-      navigate("/");
       // navigate('/createchallenge');
     } catch (err) {
+      toast.error("Failed to create group");
       console.log("Error in create Group: ", err);
     }
   };
@@ -68,7 +73,14 @@ const CreateGroupForm = () => {
         }}
       >
         <div
-          style={{ width: "90%", backgroundColor: "#CFDBF8", color: "black" }}
+          style={{
+            width: "90%",
+            backgroundColor: "#CFDBF8",
+            color: "black",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
         >
           <small>Add Group Icon here</small>
           <UploadImage picUrl={groupIcon} changePicUrl={setGroupIcon} />
