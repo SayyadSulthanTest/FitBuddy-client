@@ -127,7 +127,7 @@ const LoginModal = ({ open, onClose, navToSignUp }) => {
       // navigate("/");
     } catch (error) {
       console.error("Login failed:", error);
-      toast.error(errorMessage);
+      toast.error(Failed to login, please try again later.);
     }
   };
   // Function to load saved credentials if "Remember Me" is checked
