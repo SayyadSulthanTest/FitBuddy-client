@@ -73,14 +73,19 @@ const UploadImage = ({ picUrl, changePicUrl }) => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
+        alignItems: 'center'
       }}
     >
-      <img src={picUrl} alt="Image" srcSet="" height="200px" width="200px" />
+      <img src={picUrl} alt="Image" srcSet="" height="100px" width="100px" />
       <form
         action=""
         method="post"
         onSubmit={handleUpoad}
-        style={{ width: "100%" }}
+        style={{ width: "100%",display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        padding: '0.5rem',
+        alignItems: 'center' }}
       >
         <input
           ref={imgRef}
@@ -91,7 +96,8 @@ const UploadImage = ({ picUrl, changePicUrl }) => {
             borderRadius: "1rem",
             border: "2px solid grey",
             minWidth: "200px",
-            width: "90%",
+            width: "80%",
+            margin: 'auto',
           }}
         />
         <p>

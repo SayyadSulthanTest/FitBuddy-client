@@ -77,7 +77,8 @@ const EditProfile = () => {
           style={{
             display: "flex",
             justifyContent: "center",
-            padding: "2rem 0",
+            alignItems:'center',
+            padding: "0.5rem 0",
           }}
         >
           <UploadImage picUrl={pic} changePicUrl={setPic} />
@@ -123,6 +124,7 @@ const EditProfile = () => {
                 borderBottom: "3px solid pink",
                 outline: "none",
                 width: "45%",
+                minWidth: '300px'
               }}
             />
             {/* Age */}
@@ -144,12 +146,13 @@ const EditProfile = () => {
                 borderBottom: "3px solid pink",
                 outline: "none",
                 width: "45%",
+                minWidth: '300px'
               }}
             />
             {/* Height */}
             <input
               type="number"
-              placeholder="Height"
+              placeholder="Height in ft [5.6]"
               name="height"
               id="height"
               value={height}
@@ -165,12 +168,13 @@ const EditProfile = () => {
                 borderBottom: "3px solid pink",
                 outline: "none",
                 width: "45%",
+                minWidth: '300px'
               }}
             />
             {/* Weight */}
             <input
               type="number"
-              placeholder="Weight"
+              placeholder="Weight in kgs [65]"
               name="weight"
               id="weight"
               value={weight}
@@ -186,6 +190,8 @@ const EditProfile = () => {
                 borderBottom: "3px solid pink",
                 outline: "none",
                 width: "45%",
+                
+                minWidth: '300px'
               }}
             />
             {/* Fitness Goals */}
@@ -207,6 +213,7 @@ const EditProfile = () => {
                 borderBottom: "3px solid pink",
                 outline: "none",
                 width: "90%",
+                minWidth: '300px'
               }}
             />
           </div>

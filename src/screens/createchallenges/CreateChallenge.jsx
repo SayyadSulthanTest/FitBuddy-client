@@ -138,21 +138,11 @@ const CreateChallenge = () => {
           padding: "20px 0",
         }}
       >
-        <img
-          src={groupData && groupData.icon}
-          alt="groupprofilePic"
-          style={{
-            height: "120px",
-            width: "120px",
-            borderRadius: "50%",
-          }}
-        />
+        
         <div style={{ textAlign: "left" }}>
-          {/* <h1>Group Name</h1> */}
-          {/* <p>Group Description</p> */}
-          {/* <p>Members: 10</p> */}
           <h1>{groupData && groupData.name}</h1>
           <p>{groupData && groupData.description}</p>
+
           <p>
             Members: {groupData && groupData.users ? groupData.users.length : 0}
           </p>
@@ -192,6 +182,7 @@ const CreateChallenge = () => {
           gap: "4vh",
           alignItems: "center",
           flexDirection: "column",
+          paddingBottom: '30px'
         }}
       >
         <div
@@ -201,6 +192,7 @@ const CreateChallenge = () => {
             gap: "8px",
             width: "90vw",
             justifyContent: "center",
+            alignItems:'center'
           }}
         >
           <h2 style={{ alignSelf: "flex-start" }}>Create Challenge</h2>
@@ -296,198 +288,15 @@ const CreateChallenge = () => {
               color: "white",
               fontWeight: "bold",
               width: "50%",
-              minWidth: "250px",
+                            minWidth: "200px",
               alignSelf: "center",
+              borderRadius:'12px'
             }}
             onClick={handleCreateChallenge}
           >
             Add Challenge
           </button>
         </div>
-        {/* <div
-                    style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        gap: '8px',
-                        width: '90%',
-
-                        // width: '45%',
-                    }}
-                >
-                    <h2 style={{ alignSelf: 'flex-start' }}>Select Challenges</h2>
-                    <div
-                        style={{
-                            display: 'flex',
-                            flexWrap: 'wrap',
-                            gap: '20px',
-                            color: 'black',
-                            justifyContent: 'center',
-                        }}
-                    >
-                        <div
-                            style={{
-                                width: '45%',
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                padding: '8px',
-                                alignItems: 'center',
-                                backgroundColor: 'white',
-                                textAlign: 'left',
-                            }}
-                        >
-                            <div>
-                                <h4>Challenge Name</h4>
-                                <small>Description of the challenge</small>
-                            </div>
-                            <div>
-                                <button
-                                    style={{
-                                        color: 'white',
-                                        backgroundColor: 'black',
-                                        padding: '4px',
-                                    }}
-                                >
-                                    Select
-                                </button>
-                            </div>
-                        </div>
-                        <div
-                            style={{
-                                width: '45%',
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                padding: '8px',
-                                alignItems: 'center',
-                                backgroundColor: 'white',
-                                textAlign: 'left',
-                            }}
-                        >
-                            <div>
-                                <h4>Challenge Name</h4>
-                                <small>Description of the challenge</small>
-                            </div>
-                            <div>
-                                <button
-                                    style={{
-                                        color: 'white',
-                                        backgroundColor: 'black',
-                                        padding: '4px',
-                                    }}
-                                >
-                                    Select
-                                </button>
-                            </div>
-                        </div>
-                        <div
-                            style={{
-                                width: '45%',
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                padding: '8px',
-                                alignItems: 'center',
-                                backgroundColor: 'white',
-                                textAlign: 'left',
-                            }}
-                        >
-                            <div>
-                                <h4>Challenge Name</h4>
-                                <small>Description of the challenge</small>
-                            </div>
-                            <div>
-                                <button
-                                    style={{
-                                        color: 'white',
-                                        backgroundColor: 'black',
-                                        padding: '4px',
-                                    }}
-                                >
-                                    Select
-                                </button>
-                            </div>
-                        </div>
-                        <div
-                            style={{
-                                width: '45%',
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                padding: '8px',
-                                alignItems: 'center',
-                                backgroundColor: 'white',
-                                textAlign: 'left',
-                            }}
-                        >
-                            <div>
-                                <h4>Challenge Name</h4>
-                                <small>Description of the challenge</small>
-                            </div>
-                            <div>
-                                <button
-                                    style={{
-                                        color: 'white',
-                                        backgroundColor: 'black',
-                                        padding: '4px',
-                                    }}
-                                >
-                                    Select
-                                </button>
-                            </div>
-                        </div>
-                        <div
-                            style={{
-                                width: '45%',
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                padding: '8px',
-                                alignItems: 'center',
-                                backgroundColor: 'white',
-                                textAlign: 'left',
-                            }}
-                        >
-                            <div>
-                                <h4>Challenge Name</h4>
-                                <small>Description of the challenge</small>
-                            </div>
-                            <div>
-                                <button
-                                    style={{
-                                        color: 'white',
-                                        backgroundColor: 'black',
-                                        padding: '4px',
-                                    }}
-                                >
-                                    Select
-                                </button>
-                            </div>
-                        </div>
-                        <div
-                            style={{
-                                width: '45%',
-                                display: 'flex',
-                                justifyContent: 'space-between',
-                                padding: '8px',
-                                alignItems: 'center',
-                                backgroundColor: 'white',
-                                textAlign: 'left',
-                            }}
-                        >
-                            <div>
-                                <h4>Challenge Name</h4>
-                                <small>Description of the challenge</small>
-                            </div>
-                            <div>
-                                <button
-                                    style={{
-                                        color: 'white',
-                                        backgroundColor: 'black',
-                                        padding: '4px',
-                                    }}
-                                >
-                                    Select
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
       </div>
     </div>
   );

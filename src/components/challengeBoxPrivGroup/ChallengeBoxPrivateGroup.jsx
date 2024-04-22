@@ -62,6 +62,7 @@ const ChallengeBoxPrivateGroup = ({ showCalender, id }) => {
       );
 
       getChallenges();
+      toast.success('Now you are a part of this challenge');
     } catch (err) {
       console.log(err);
       toast.error(err.message);
@@ -167,14 +168,14 @@ const ChallengeBoxPrivateGroup = ({ showCalender, id }) => {
           display: "flex",
           flexDirection: "column",
           gap: "8px",
-          height: "30%",
+          height:'50vh'
         }}
       >
         <h2>
           Challenges{" "}
           <button
             className="add-challenge-btn"
-            style={{ borderRadius: "0.5rem", backgroundColor: "green" }}
+            style={{ borderRadius: "50%", backgroundColor: "green", padding:'3px', fontWeight:'bold' }}
             onClick={() => history(`/groups/${id}/createchallenge`)}
           >
             +
@@ -234,11 +235,11 @@ const ChallengeBoxPrivateGroup = ({ showCalender, id }) => {
                   style={{
                     borderRadius: "10px",
                     padding: "4px 8px",
-                    backgroundColor: "lightgreen",
+                    backgroundColor: "green",
                     color: "black",
                   }}
                 >
-                  "JOIN"
+                  JOIN
                 </button>
               )}
             </div>

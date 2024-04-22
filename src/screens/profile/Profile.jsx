@@ -188,7 +188,7 @@ const Profile = () => {
                 gap: "10px",
               }}
             >
-              <img src={userData?.pic} alt="profilePic" height="100px" />
+              <img src={userData?.pic} alt="profilePic" height="100px" style={{borderRadius:'12px'}} />
               <div
                 style={{
                   display: "flex",
@@ -198,9 +198,11 @@ const Profile = () => {
                 }}
               >
                 <h4>{userData?.name}</h4>
-                <p>
-                  Age: {userData?.age} | Weight: {userData?.weight}kg | Height:{" "}
-                  {userData?.height?.value} ft
+                <p style={{display: 'flex', flexDirection: 'column', justifyContent: 'flexStart', alignItems:'flexStart',}}>
+                  <p>Age: {userData?.age ? `${userData.age} yo` : 'Add age'}  </p>
+                  <p>Weight: {userData?.weight ? `${userData?.weight} kgs` : 'Add weight'} </p>
+                  <p> Height:
+                  {userData?.height?.value ? `${userData?.height?.value} ft` : 'Add height' }</p>
                 </p>
                 <p>Fitness Goals: {userData?.fitnessGoals}</p>
                 <button
@@ -222,7 +224,7 @@ const Profile = () => {
 
         <Grid item xs={12}>
           <Paper
-            sx={{ padding: "10px", backgroundColor: "black", color: "white" }}
+            sx={{ padding: "10px", paddingTop: '0', backgroundColor: "black", color: "white" }}
           >
             <h3>Groups</h3>
 
@@ -241,12 +243,13 @@ const Profile = () => {
                 <div
                   key={index}
                   style={{
-                    minWidth: "300px",
-                    width: "33%",
+                    minWidth: "320px",
+                    // minHeight:'120px',
+                    width: "45%",
                     border: "2px solid gold",
-
+borderRadius: '12px',
                     display: "flex",
-                    // flexDirection: "column",
+                    flexDirection: "column",
                   }}
                 >
                   <div
@@ -260,8 +263,8 @@ const Profile = () => {
                     <img
                       src={group.icon}
                       alt="groupIconPic"
-                      height="150px"
-                      width="150px"
+                      height="70px"
+                      width="70px"
                       style={{ borderRadius: "6px", border: "solid 1px gold" }}
                     />
                     <div
@@ -293,8 +296,13 @@ const Profile = () => {
                           {group.description}
                         </p>
 
-                        <span>
-                          Role:{" "}
+                        
+                      </div>
+                    </div>
+                  </div>
+                <div style={{display: 'flex', justifyContent: 'space-evenly', padding:'4px'}}>
+                <span>
+                          Role:
                           {group.admin === userData.id ? "Admin" : "Member"}
                         </span>
 
@@ -305,8 +313,7 @@ const Profile = () => {
                           style={{
                             color: "black",
                             backgroundColor: "red",
-                            margin: "auto",
-                            padding: "2px 14px",
+                            padding: "0 14px",
                             borderRadius: "6px",
                           }}
                         >
@@ -314,9 +321,7 @@ const Profile = () => {
                             {group.admin === userData.id ? "Delete" : "Leave"}
                           </strong>
                         </button>
-                      </div>
-                    </div>
-                  </div>
+                </div>
                 </div>
               ))}
             </div>

@@ -124,7 +124,7 @@ const UserList = ({
   return (
     <div
       className="user-list-container"
-      style={{ width: "90%", height: "100%", overflowY: "hidden" }}
+      style={{ width: "90%", height: "100%", overflowY: "hidden", backgroundColor: 'black' }}
     >
       <div
         style={{
@@ -132,7 +132,6 @@ const UserList = ({
           flexWrap: "wrap",
           gap: "20px",
           justifyContent: "space-between",
-          width: "70%",
           margin: "auto",
         }}
       >
@@ -167,7 +166,7 @@ const UserList = ({
               backgroundColor: "green",
               borderRadius: "10px",
               padding: "3px 14px",
-              alignSelf: "center",
+              alignSelf: "flexEnd",
             }}
             onClick={handleAddUsersAPI}
           >

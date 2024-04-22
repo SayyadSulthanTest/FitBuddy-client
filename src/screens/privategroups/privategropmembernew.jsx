@@ -67,7 +67,7 @@ const GroupPage = () => {
                     display: 'flex',
                     flexWrap: 'wrap',
                     justifyContent: 'center',
-                    gap: '20px',
+                    gap: '10px',
                 }}
             >
                 {members.map((member, index) => (
@@ -80,10 +80,10 @@ const GroupPage = () => {
                             minWidth: '350px',
                             width: '48%',
                             alignItems: 'center',
-                            padding: '6px 26px 6px 6px',
+                            padding: '6px',
                             marginTop: '2vh',
                             backgroundColor: getRandomColor(),
-                            borderRadius: '100px 20px 20px 100px',
+                            borderRadius: '20px',
                         }}
                     >
                         <img
@@ -113,6 +113,7 @@ const GroupPage = () => {
                         margin: 'auto',
                         backgroundColor: 'lightgray',
                         fontWeight: 'bold',
+                        borderRadius: '10px'
                     }}
                 >
                     Go Back

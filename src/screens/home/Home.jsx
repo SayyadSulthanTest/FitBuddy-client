@@ -174,7 +174,7 @@ const Home = () => {
             Welcome to fitbuddy, <em>{user?.name}</em>{" "}
           </h1>
           {/* <p>{Add some api to fetch fitness quotes to display after user login }</p> */}
-          <h2 style={{ textAlign: "center" }}>
+          <h2 style={{ textAlign: "center", color: 'black' }}>
             Groups : {privateGroups.length}
           </h2>
           <Box
@@ -200,7 +200,7 @@ const Home = () => {
                 alignItems="center"
                 gap={4}
                 // bgcolor={"white"}
-                color={"black"}
+                color={"white"}
                 sx={{
                   flexDirection: "column",
                   borderRadius: "20px",
@@ -223,7 +223,7 @@ const Home = () => {
                     width: "100%",
                     height: "100%",
                     objectFit: "cover",
-                    filter: "brightness(80%)", // Adjust brightness to 50%
+                    filter: "brightness(50%)", // Adjust brightness to 50%
                     zIndex: 1, // Ensure the video is behind the content
                   }}
                 ></img>
@@ -248,7 +248,7 @@ const Home = () => {
                     height: "100%",
                   }}
                 >
-                  <h2>{group.name}</h2>
+                  <h2 style={{color: 'white'}}>{group.name}</h2>
                   <button
                     onClick={() => handleNavigatePrivateGroup(group._id)}
                     style={{

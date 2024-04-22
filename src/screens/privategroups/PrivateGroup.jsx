@@ -21,6 +21,7 @@ const PrivateGroup = () => {
     const [challenges, setChallenges] = useState([]);
     const [searchableUsers, setSearchableUsers] = useState([]);
     const [alreadyMember, setAlreadyMember] = useState(false);
+    const [inviteNumber, setInviteNumber] = useState(null)
     //   const [isGroupUpdated, setIsGroupUpdated] = useState(false);
 
     const handleGetAllData = async () => {
@@ -196,11 +197,20 @@ const PrivateGroup = () => {
         );
     }
 
+const handleWhatsappInvite = async () => {
+    const groupLink = `https://fitbuddy-nine.vercel.app/api/privategroup/${id}`
+    const message=`Welcome to fitbuddy, I invite to join my group ${groupLink} and be part of my fitness journey tracking. `
+    const url = `https://wa.me/${inviteNumber}?text=${message}`;
+    toast.success('Invite sent');
+    return window.open(url, '_blank');
+
+}
+
     return (
         <div
             className="privategroup-container"
             style={{
-                minHeight: '100vh',
+                minHeight: '200vh',
                 paddingTop: '7vh',
                 backgroundColor: 'black',
                 color: 'white',
@@ -221,7 +231,7 @@ const PrivateGroup = () => {
                     <div
                         className="right-side"
                         style={{
-                            height: '90vh',
+                            // height: '90vh',
                             minWidth: '350px',
                             width: '54%',
                             padding: '24px',
@@ -241,14 +251,14 @@ const PrivateGroup = () => {
                                 flexDirection: 'column',
                                 gap: '8px',
                                 alignItems: 'center',
-                                height: '50%',
+                                // height: '50%',
                             }}
                         >
                             <h2>{groupData && groupData.name}</h2>
                             <img
                                 src={groupData.icon}
-                                alt="Exercise Image"
-                                style={{ maxWidth: '100%', maxHeight: '65%' }}
+                                alt="Group Icon"
+                                style={{ maxWidth: '150px', width: '60%', maxHeight: '150px', border: '1px solid gold', borderRadius: '10px' }}
                             />
                             <p>{groupData.description}</p>
                             <p>Members Joined: {groupMembers.length}</p>
@@ -336,8 +346,49 @@ const PrivateGroup = () => {
                                 </div>
                             )}
                         </div>
+                        
+                        <div className="box invite-friends">
+                            <h2 style={{paddingBottom:'0.6rem'}}>Invite Friends</h2>
+                            <form onSubmit={handleWhatsappInvite}>
+                            <input
+                                type="tel"
+                                placeholder="Add Phone Number"
+                                pattern="[0-9]{10}"
+                                value={inviteNumber}
+                                onChange={(e) => setInviteNumber(e.target.value)}
+                                style={{
+                                    fontWeight: 'bold',
+                                    width: '70%',
+                                    minWidth: '200px',
+                                    margin: 'auto',
+                                    borderRadius: '0.6rem 0 0 0.6rem',
+                                    padding: '4px 8px',
+                                }}
+                            />
+                            <button
+                                className="send-invite-btn"
+                                type="submit"
+                                style={{
+                                    borderRadius: '0 0.6rem 0.6rem 0',
+                                    padding: '4px 8px',
+                                    margin: 'auto',
+                                }}
+                            >
+                                <strong>Send</strong>
+                            </button>
+                            </form>
 
-                        {challenges.length === 0 ? (
+                        </div>
+                        {showCalender && (
+                        <ChallengeBoxPrivateGroup
+                            showCalender={showCalender}
+                            challenges={challenges}
+                            setChallenges={setChallenges}
+                            id={id}
+                        />
+                    )}
+
+                        {challenges.length === 0 && (
                             <h1>
                                 <button
                                     onClick={() => history(`/groups/${id}/createchallenge`)}
@@ -351,45 +402,10 @@ const PrivateGroup = () => {
                                     <strong> Create Challenge + </strong>
                                 </button>
                             </h1>
-                        ) : (
-                            <p></p>
                         )}
 
-                        <div className="box invite-friends">
-                            <h2>Invite Friends</h2>
-                            <input
-                                type="email"
-                                placeholder="Enter friend's email: friend@example.com"
-                                style={{
-                                    fontWeight: 'bold',
-                                    width: '70%',
-                                    minWidth: '300px',
-                                    margin: 'auto',
-                                    borderRadius: '0.6rem',
-                                    padding: '4px 8px',
-                                }}
-                            />
-                            <button
-                                className="send-invite-btn"
-                                style={{
-                                    borderRadius: '10px',
-                                    padding: '4px 8px',
-                                    margin: 'auto',
-                                }}
-                            >
-                                <strong>Send Invite</strong>
-                            </button>
-                        </div>
                     </div>
-                    {/* {!showCalender && <SampleCalendar />} */}
-                    {showCalender && (
-                        <ChallengeBoxPrivateGroup
-                            showCalender={showCalender}
-                            challenges={challenges}
-                            setChallenges={setChallenges}
-                            id={id}
-                        />
-                    )}
+                    
                 </div>
             </main>
         </div>

@@ -81,11 +81,12 @@ const CreateGroupForm = () => {
                         backgroundColor: '#CFDBF8',
                         color: 'black',
                         display: 'flex',
+                        flexDirection: 'column',
                         justifyContent: 'center',
                         alignItems: 'center',
                     }}
                 >
-                    <small>Add Group Icon here</small>
+                    <p style={{textAlign:'center'}}>Add Group Icon here</p>
                     <UploadImage picUrl={groupIcon} changePicUrl={setGroupIcon} />
                 </div>
 
