@@ -32,6 +32,7 @@ const ProtectedRoutes = ({ childrens, ...rest }) => {
   if (auth.isLoggedIn) {
     return <Outlet />;
   }
+
   return <Navigate to="/" />;
 };
 
@@ -96,7 +97,7 @@ const App = () => {
             <Route path="/editprofile" element={<EditProfile />} />
             <Route path="/publicgroups" element={<ComingSoon />} />
             <Route path="/profile" element={<ProtectedRoutes />}>
-              <Route path="/profile" Component={Profile} />
+              <Route path="/profile" element={<Profile />} />
             </Route>
             <Route path="/creategroup" element={<CreateGroup />} />{" "}
             <Route
