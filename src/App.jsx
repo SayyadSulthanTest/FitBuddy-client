@@ -22,7 +22,7 @@ import ShowMembers from "./screens/privategroups/privategropmembernew.jsx";
 import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
 import { login, logout, updateUser } from "./slices/authSlice.js";
-import PublicGroup from "./screens/publicgroups/PublicGroup.jsx";
+// import PublicGroup from "./screens/publicgroups/PublicGroup.jsx";
 import PrivateGroup from "./screens/privategroups/PrivateGroup.jsx";
 import ComingSoon from "./components/comingsoon/ComingSoon.jsx";
 import Loading from "./components/loading/Loading.jsx";
