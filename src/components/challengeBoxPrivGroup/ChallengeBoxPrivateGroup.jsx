@@ -9,7 +9,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 const ChallengeBoxPrivateGroup = ({ showCalender, id }) => {
     const history = useNavigate();
     const [challenges, setChallenges] = useState([]);
-    const [progress, setProgress] = useState([]);
+    const [progress, setProgress] = useState({});
     const [selectedChallenge, setSelectedChallenge] = useState(null);
     const user = useSelector((state) => state.auth);
 
@@ -69,13 +69,41 @@ const ChallengeBoxPrivateGroup = ({ showCalender, id }) => {
         }
     };
 
-    const handleShowProgress = (challengeId) => {
+    const handleShowProgress = (challengeId, isUpdate = false) => {
         const index = challenges.findIndex((val) => val._id === challengeId);
         const progressData = challenges[index].progress;
         const progressIndex = progressData.findIndex((val) => val.user._id === user.id);
+        // console.log('progress!!!!!: ', progressData);
+        // console.log('progress2: ', progressData[progressIndex]);
+        if (isUpdate) {
+            // Get the current date
+            const currentDate = new Date();
 
-        setProgress(progressData[progressIndex]);
-        setSelectedChallenge(challenges[index]);
+            // Subtract one day from the current date
+            const previousDate = new Date(currentDate);
+            previousDate.setDate(currentDate.getDate() - 1);
+            let isDateExists = progressData[progressIndex].data.findIndex(
+                (val) => val.date.split('T')[0]
+            );
+            if (isDateExists !== -1) {
+                progressData[progressIndex].data.forEach((data) => {
+                    if (data.date.split('T')[0] === previousDate.toISOString().split('T')[0]) {
+                        if (!data.completed) data.completed = true;
+                    }
+
+                    return data;
+                });
+            } else {
+                progressData[progressIndex].data.push({
+                    completed: true,
+                    date: '2024-04-22T00:00:00.000Z',
+                });
+            }
+        }
+        if (progressIndex != -1) {
+            setProgress(JSON.parse(JSON.stringify(progressData[progressIndex])));
+            setSelectedChallenge(JSON.parse(JSON.stringify(challenges[index])));
+        }
     };
 
     const handleUpdateProgress = async (challengeId) => {
@@ -109,6 +137,7 @@ const ChallengeBoxPrivateGroup = ({ showCalender, id }) => {
                 config
             );
 
+            // console.log('API Call !!', response.data);
             // Re-fetch the updated progress data
             const progressResponse = await axios.get(`${API_URL}/challenges/${id}`, config);
             const updatedProgress = progressResponse.data.data.progress || [];
@@ -128,7 +157,7 @@ const ChallengeBoxPrivateGroup = ({ showCalender, id }) => {
                 })
             );
 
-            handleShowProgress(challengeId);
+            handleShowProgress(challengeId, true);
 
             toast('Progress Updated..');
         } catch (err) {
