@@ -98,9 +98,12 @@ const App = () => {
                     <Routes>
                         <Route path="/editprofile" element={<EditProfile />} />
                         <Route path="/publicgroups" element={<ComingSoon />} />
-                        <Route path="/profile" element={<ProtectedRoutes />}>
+                        {/* <Route path="/profile" element={<ProtectedRoutes />}>
                             <Route path="/" element={<Profile />} />
-                        </Route>
+                        </Route> */}
+                        <Route path="/profile" element={<ProtectedRoutes />} />
+                        <Route path="/profile" element={<Profile />} />
+
                         <Route path="/creategroup" element={<CreateGroup />} />
                         <Route path="/groups/:id/createchallenge" element={<CreateChallenge />} />
                         <Route path="/privategroup/:id/members" element={<ShowMembers />} />
